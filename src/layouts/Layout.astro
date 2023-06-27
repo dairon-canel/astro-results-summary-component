@@ -1,0 +1,126 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  @font-face {
+    font-family: 'Hanken Grotesk';
+    src: url(/fonts/HankenGrotesk-VariableFont_wght.ttf);
+  }
+
+  /* css reset from https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+  /*
+  1. Use a more-intuitive box-sizing model.
+*/
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  /*
+  2. Remove default margin
+*/
+  * {
+    margin: 0;
+  }
+  /*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+  5. Improve media defaults
+*/
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+  6. Remove built-in form typography styles
+*/
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+  /*
+  7. Avoid text overflows
+*/
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+  8. Create a root stacking context
+*/
+  #root,
+  #__next {
+    isolation: isolate;
+  }
+
+  :root {
+    --light-red: hsl(0, 100%, 67%);
+    --orangey-yellow: hsl(39, 100%, 56%);
+    --green-teal: hsl(166, 100%, 37%);
+    --cobalt-blue: hsl(234, 85%, 45%);
+
+    --bg-light-slate-blue: hsl(252, 100%, 67%);
+    --bg-light-royal-blue: hsl(241, 81%, 54%);
+
+    --circle-violet-blue: hsla(256, 72%, 46%, 1);
+    --circle-persian-blue: hsla(241, 72%, 46%, 0);
+
+    --white: hsl(0, 0%, 100%);
+    --pale-blue: hsl(221, 100%, 96%);
+    --light-lavender: hsl(241, 100%, 89%);
+    --dark-gray-blue: hsl(224, 30%, 27%);
+  }
+
+  html {
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    font-size: 18px;
+  }
+
+  body {
+    position: relative;
+    height: 100vh;
+  }
+</style>
