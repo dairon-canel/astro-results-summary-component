@@ -49,6 +49,9 @@ const { data, class: className } = Astro.props;
 <style>
   .results_summary {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
   }
 
   .results_summary__heading {
@@ -198,5 +201,53 @@ const { data, class: className } = Astro.props;
       var(--bg-light-slate-blue),
       var(--bg-light-royal-blue)
     );
+  }
+
+  @media screen and (min-width: 1000px) {
+    .results_summary {
+      background-color: red;
+      flex-direction: row;
+      place-self: center;
+      width: 735px;
+    }
+
+    .results_summary__heading {
+      width: 367px;
+      border-top-right-radius: 30px;
+      border-top-left-radius: 30px;
+      height: 513px;
+    }
+
+    .results_summary__heading_title {
+      margin-top: 37px;
+      font-size: x-large;
+    }
+
+    .results_summary__heading_score {
+      margin-top: 95px;
+      font-size: 70px;
+    }
+
+    .results_summary__heading_top_score {
+      margin-top: 11.5px;
+      font-size: large;
+    }
+
+    .results_summary__heading_results {
+      margin-top: 68px;
+      font-size: xx-large;
+    }
+
+    .results_summary__heading_message {
+      font-size: large;
+      margin-top: 11px;
+      line-height: 23px;
+    }
+
+    .results_summary__heading::before {
+      margin-top: 33px;
+      width: 200px;
+      height: 200px;
+    }
   }
 </style>
