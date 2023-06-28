@@ -19,20 +19,30 @@ const { data, class: className } = Astro.props;
     </p>
   </header>
   <div class="results_summary__data_display">
-    <h2>Summary</h2>
+    <h2 class="results_summary__data_display_title">Summary</h2>
     {
       data.map(d => (
-        <div>
-          <img src={d.icon} alt={d.category} />
-          <p>{d.category}</p>
-          <p>
+        <div
+          class:list={[
+            'data_display',
+            {
+              data_display_red: d.color == 'red',
+              data_display_yellow: d.color == 'yellow',
+              data_display_green: d.color == 'green',
+              data_display_blue: d.color == 'blue',
+            },
+          ]}
+        >
+          <img class="data_display_img" src={d.icon} alt={d.category} />
+          <p class="data_display_category">{d.category}</p>
+          <p class="data_display_score">
             {d.score}
-            <span>/ 100</span>
+            <span class="data_display_total_score">/ 100</span>
           </p>
         </div>
       ))
     }
-    <button>Continue</button>
+    <button class="results_summary__data_display_button">Continue</button>
   </div>
 </section>
 
@@ -110,6 +120,83 @@ const { data, class: className } = Astro.props;
   }
 
   .results_summary__data_display {
-    background-color: blueviolet;
+    margin-top: 21px;
+    margin-left: 29px;
+    margin-right: 29px;
+    font-size: small;
+  }
+
+  .results_summary__data_display_title {
+    color: var(--dark-gray-blue);
+    margin-bottom: 21px;
+  }
+
+  .data_display {
+    height: 57px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 0.12fr 0.48fr 0.4fr;
+    align-items: center;
+    font-weight: bold;
+    font-size: medium;
+    margin-bottom: 15px;
+  }
+
+  .data_display_red {
+    background-color: var(--light-red-opaque);
+    color: var(--light-red);
+  }
+  .data_display_yellow {
+    background-color: var(--orangey-yellow-opaque);
+    color: var(--orangey-yellow);
+  }
+  .data_display_green {
+    background-color: var(--green-teal-opaque);
+    color: var(--green-teal);
+  }
+  .data_display_blue {
+    background-color: var(--cobalt-blue-opaque);
+    color: var(--cobalt-blue);
+  }
+
+  .data_display_img {
+    margin-left: 16px;
+  }
+
+  .data_display_category {
+    padding-bottom: 2px;
+    margin-left: 11px;
+  }
+
+  .data_display_score {
+    justify-self: end;
+    margin-right: 18px;
+    color: var(--dark-gray-blue);
+  }
+
+  .data_display_total_score {
+    margin-left: 4px;
+    opacity: 50%;
+  }
+
+  .results_summary__data_display_button {
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    height: 58px;
+    width: 100%;
+    border-radius: 30px;
+    background-color: var(--dark-gray-blue);
+    color: var(--white);
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .results_summary__data_display_button:hover {
+    cursor: pointer;
+    background: linear-gradient(
+      var(--bg-light-slate-blue),
+      var(--bg-light-royal-blue)
+    );
   }
 </style>
