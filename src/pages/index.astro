@@ -1,22 +1,40 @@
 ---
+import ResultsSummary from '../components/ResultsSummary.astro';
 import Layout from '../layouts/Layout.astro';
 
-interface DataSample {
-  currentBalance: number;
-  currentMonthExpenses: number;
+export interface DataSample {
+  category: string;
+  score: number;
+  icon: string;
 }
 
-const data: DataSample = {
-  currentBalance: 921.48,
-  currentMonthExpenses: 478.32,
-};
+const data: DataSample[] = [
+  {
+    category: 'Reaction',
+    score: 80,
+    icon: '/images/icon-reaction.svg',
+  },
+  {
+    category: 'Memory',
+    score: 92,
+    icon: '/images/icon-memory.svg',
+  },
+  {
+    category: 'Verbal',
+    score: 61,
+    icon: '/images/icon-verbal.svg',
+  },
+  {
+    category: 'Visual',
+    score: 72,
+    icon: '/images/icon-visual.svg',
+  },
+];
 ---
 
 <Layout title="Frontend Mentor | Results summary component">
   <main>
-    Your Result 76 of 100 Great You scored higher than 65% of the people who
-    have taken these tests. Summary Reaction 80 / 100 Memory 92 / 100 Verbal 61
-    / 100 Visual 72 / 100 Continue
+    <ResultsSummary data={data} />
   </main>
 </Layout>
 
